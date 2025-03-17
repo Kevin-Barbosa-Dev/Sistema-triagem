@@ -14,9 +14,17 @@ public class CartaoController {
         this.lista = new ListaEncadeadaSimples();
     }
 
-    public void cadastrarPaciente() {
+    public void cadastrarPaciente(Cartao paciente) {
         paciente = view.formCadastro();
         lista.adicionarCartao(paciente);
+    }
+
+    // TODO: Ordenar a lista por tipo de urgência
+    public void visualizarListaPorTipoDeUrgência() {
+        if (lista.getTamanho() == 0) {
+            System.out.println("Nenhum paciente cadastrado.");
+        }
+
     }
 
     public void start() {
@@ -24,7 +32,7 @@ public class CartaoController {
         while (opcao != 0) {
             switch (opcao) {
                 case 1:
-                    cadastrarPaciente();
+                    cadastrarPaciente(paciente);
                     break;
                 case 2:
                     break;

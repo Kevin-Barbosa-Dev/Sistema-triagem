@@ -15,14 +15,29 @@ public class TestCadastrarPaciente {
     @Before
     public void setUp() {
         lista = new ListaEncadeadaSimples();
-        paciente = new Cartao("João", 'v');
+
     }
 
     @Test
-    public void testCadastrarPaciente() {
+    public void testCadastrarPacienteComSucesso() {
+        paciente = new Cartao("João", 'v');
         lista.adicionarCartao(paciente);
         assertEquals(1, lista.getTamanho());
         assertEquals(paciente, lista.getHead());
         assertEquals(paciente, lista.getUltimo());
+    }
+
+    @Test
+    public void testCadastrarPacienteComCorInvalida() {
+        paciente = new Cartao("João", 'x');
+        lista.adicionarCartao(paciente);
+        assertEquals(0, lista.getTamanho());
+    }
+
+    @Test
+    public void testCadastrarPacienteComNomeInvalido() {
+        paciente = new Cartao(" ", 'v');
+        lista.adicionarCartao(paciente);
+        assertEquals(0, lista.getTamanho());
     }
 }

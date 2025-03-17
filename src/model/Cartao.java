@@ -26,4 +26,9 @@ public class Cartao {
     public void setProximo(Cartao proximo) {
         this.proximo = proximo;
     }
+
+    @Override
+    public String toString() {
+        return "Paciente: " + nome + ", Cor: " + cor;
+    }
 }
