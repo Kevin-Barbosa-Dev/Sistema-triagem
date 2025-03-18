@@ -26,6 +26,14 @@ public class CartaoController {
         }
 
     }
+    public void pesquisarPaciente(){
+        String nome = view.pesquisar();
+        lista.localizarPaciente(nome);
+    }
+    public void removerPaciente(){
+        String nome = view.pesquisar();
+        lista.remover(nome);
+    }
 
     public void start() {
         int opcao = view.showMenu();
@@ -35,10 +43,13 @@ public class CartaoController {
                     cadastrarPaciente(paciente);
                     break;
                 case 2:
+                    removerPaciente();
                     break;
                 case 3:
+                    pesquisarPaciente();
                     break;
                 case 4:
+                    lista.exibirLista();
                     break;
                 case 5:
                     break;

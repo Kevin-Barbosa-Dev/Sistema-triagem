@@ -25,4 +25,9 @@ public class CartaoView {
         char cor = scanner.next().toLowerCase().charAt(0);
         return new Cartao(nome, cor);
     }
+    public String pesquisar(){
+        Scanner scanner1 = new Scanner(System.in);
+        System.out.println("Digite o nome do paciente: ");
+        return scanner1.nextLine();
+    }
 }
