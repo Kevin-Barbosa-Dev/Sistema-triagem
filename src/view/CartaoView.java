@@ -28,8 +28,9 @@ public class CartaoView {
     }
 
     public String pesquisar() {
+        Scanner scanner1 = new Scanner(System.in);
         System.out.println("Digite o nome do paciente: ");
-        return scanner.nextLine();
+        return scanner1.nextLine();
     }
 
     public void listar(List<Cartao> listaCartoes) {
