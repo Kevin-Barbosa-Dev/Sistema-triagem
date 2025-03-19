@@ -7,9 +7,7 @@ public class Validacao {
     }
 
     public static boolean validarCor(char cor) {
-        return cor != 'a' &&
-                cor != 'v' &&
-                cor != 'A' &&
-                cor != 'V';
+        return cor != 'a' ||
+                cor != 'v';
     }
 }
