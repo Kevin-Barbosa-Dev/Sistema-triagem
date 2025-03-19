@@ -51,16 +51,16 @@ public class ListaEncadeadaSimples {
 
         while (atual != null) {
             String nomePaciente = atual.getNome();
-            char cor = atual.getCor();//poter metodo Upper
+            char cor = atual.getCor();
 
-            // Determina qual contador incrementar
+
             int posicaoAtual;
             switch (cor) {
                 case 'A':
                     posicaoAtual = ++posicaoAlta;
                     break;
                 case 'V':
-                    posicaoAtual = ++posicaoBaixa;//criar um metodo para somar os amarelos na frente dos verdes.
+                    posicaoAtual = ++posicaoBaixa;
                     break;
                 default:
                     posicaoAtual = -1;
@@ -85,7 +85,7 @@ public class ListaEncadeadaSimples {
         if (head != null && nome.equalsIgnoreCase(head.getNome())) {
             head = atual.getProximo();
             System.out.println("Paciente removido: " + nome);
-            return true;// foi apagado
+            return true;
         }
         while (atual != null && !nome.equalsIgnoreCase(atual.getNome())) {
             anterior = atual;
