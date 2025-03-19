@@ -1,5 +1,6 @@
 package view;
 
+import java.util.List;
 import java.util.Scanner;
 
 import model.Cartao;
@@ -25,11 +26,18 @@ public class CartaoView {
         char cor = scanner.next().toUpperCase().charAt(0);
         return new Cartao(nome, cor);
     }
-    public String pesquisar(){
-        Scanner scanner1 = new Scanner(System.in);
+
+    public String pesquisar() {
         System.out.println("Digite o nome do paciente: ");
-        return scanner1.nextLine();
+        return scanner.nextLine();
     }
+
+    public void listar(List<Cartao> listaCartoes) {
+        for (Cartao cartao : listaCartoes) {
+            System.out.println("Paciente: " + cartao.getNome() + ", Cor: " + cartao.getCor());
+        }
+    }
+
     public void exibir(Cartao head){
         Cartao atual = head;
         if(head == null){
@@ -42,4 +50,11 @@ public class CartaoView {
             atual = atual.getProximo();
         }
     }
+    public void imprimirSituacaoDaLista(int capacidade, int tamanho) {
+        System.out.println("Situação da lista:");
+        System.out.println("Tamanho da lista: " + capacidade);
+        System.out.println("Total de posições livres: " + (capacidade - tamanho));
+        System.out.println("Total de posições ocupadas: " + tamanho);
+    }
+
 }

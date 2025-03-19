@@ -1,7 +1,10 @@
 package controller;
 
+import java.util.List;
+
 import model.Cartao;
 import model.ListaEncadeadaSimples;
+import utils.Mensagem;
 import view.CartaoView;
 
 public class CartaoController {
@@ -19,23 +22,32 @@ public class CartaoController {
         lista.adicionarCartao(paciente);
     }
 
-    // TODO: Ordenar a lista por tipo de urgência
-    public void visualizarListaPorTipoDeUrgência() {
-        if (lista.getTamanho() == 0) {
-            System.out.println("Nenhum paciente cadastrado.");
-        }
-
-    }
-    public void pesquisarPaciente(){
+    public void pesquisarPaciente() {
         String nome = view.pesquisar();
         lista.localizarPaciente(nome);
     }
-    public void removerPaciente(){
+
+    public void removerPaciente() {
         String nome = view.pesquisar();
         lista.remover(nome);
     }
     public void exibirLista(){
         view.exibir(lista.getHead());
+    }
+
+    public void mostrarListaPorTipoDeUrgência() {
+        lista.listaIgualAZero();
+
+        List<Cartao> listaOrdenadaPorUrgencia = lista.listarPorUrgencia();
+        view.listar(listaOrdenadaPorUrgencia);
+    }
+
+    public void mostrarSituacaoDaLista() {
+        if (lista.getTamanho() == 0) {
+            Mensagem.mensagemNenhumPacienteCadastrado();
+            return;
+        }
+        view.imprimirSituacaoDaLista(lista.getCapacidade(), lista.getTamanho());
     }
 
     public void start() {
@@ -55,11 +67,13 @@ public class CartaoController {
                     exibirLista();
                     break;
                 case 5:
+                    mostrarListaPorTipoDeUrgência();
                     break;
                 case 6:
+                    mostrarSituacaoDaLista();
                     break;
                 default:
-                    System.out.println("Opção inválida");
+                    Mensagem.mensagemInvalida();
             }
             opcao = view.showMenu();
         }

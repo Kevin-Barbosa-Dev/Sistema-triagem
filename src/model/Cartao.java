@@ -29,6 +29,6 @@ public class Cartao {
 
     @Override
     public String toString() {
-        return "Paciente: " + nome + ", Cor: " + cor;
+        return "Nome: " + nome + ", Cor: " + cor;
     }
 }

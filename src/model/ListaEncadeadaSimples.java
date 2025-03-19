@@ -1,5 +1,8 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import utils.Mensagem;
 import utils.Validacao;
 
@@ -7,20 +10,7 @@ public class ListaEncadeadaSimples {
     private Cartao head;
     private int tamanho = 0;
     private Cartao ultimo;
-    private static final int capacidade = 10;
-
-    // se o tamanho for 0 o inicio(head) e fim(ultimo) permanecem na mesma celula,
-    // se o tamanho for maior que 0, o ultimo aponta para a novo celula e o ultimo
-    // recebe a nova celula e tamanho é incrementado
-    // Exemplo:
-    // tamanho é 0
-    // |inicio|
-    // |fim|
-    // tamanho é 1
-    // |inicio| -> |novo|
-    // |fim|
-    // |inicio| -> |novo|
-    // |fim|
+    private final int capacidade = 10;
 
     public void adicionarCartao(Cartao novoCartao) {
         if (tamanho >= capacidade) {
@@ -32,7 +22,7 @@ public class ListaEncadeadaSimples {
             return;
 
         }
-        if (Validacao.validarCor(novoCartao.getCor())) {
+        if (!Validacao.validarCor(novoCartao.getCor())) {
             Mensagem.mensagemCorInvalida();
             return;
         }
@@ -45,7 +35,16 @@ public class ListaEncadeadaSimples {
         tamanho++;
     }
 
-    public Cartao localizarPaciente(String nome){
+
+    public void exibirLista() {
+        Cartao atual = head;
+        while (atual != null) {
+            System.out.println(atual);
+            atual = atual.getProximo();
+        }
+    }
+
+    public Cartao localizarPaciente(String nome) {
         Cartao atual = head;
         int posicaoAlta = 0;
         int posicaoBaixa = 0;
@@ -79,28 +78,58 @@ public class ListaEncadeadaSimples {
         return null;
     }
 
-    public boolean remover(String nome){
+    public boolean remover(String nome) {
         Cartao atual = head;
         Cartao anterior = null;
 
-        if (head != null && nome.equalsIgnoreCase(head.getNome())){
+        if (head != null && nome.equalsIgnoreCase(head.getNome())) {
             head = atual.getProximo();
-            System.out.println("Paciente removido: "+ nome);
-            return true;//foi apagado
+            System.out.println("Paciente removido: " + nome);
+            return true;// foi apagado
         }
-        while(atual != null && !nome.equalsIgnoreCase(atual.getNome())){
+        while (atual != null && !nome.equalsIgnoreCase(atual.getNome())) {
             anterior = atual;
             atual = atual.getProximo();
         }
 
-        if(atual == null){
+        if (atual == null) {
             System.out.println("Paciente não encontrado!");
             return false;
         }
         anterior.setProximo(atual.getProximo());
-        System.out.println("Paciente removido: "+ nome);
+        System.out.println("Paciente removido: " + nome);
         return true;
     }
+
+    public List<Cartao> listarPorUrgencia() {
+        List<Cartao> listaOrdenadaPorUrgencia = new ArrayList<>();
+        Cartao atual = head;
+
+        while (atual != null) {
+            if (atual.getCor() == 'A') {
+                listaOrdenadaPorUrgencia.add(atual);
+            }
+            atual = atual.getProximo();
+        }
+
+        atual = head;
+        while (atual != null) {
+            if (atual.getCor() == 'V') {
+                listaOrdenadaPorUrgencia.add(atual);
+            }
+            atual = atual.getProximo();
+        }
+
+        return listaOrdenadaPorUrgencia;
+    }
+
+    public void listaIgualAZero() {
+        if (tamanho == 0) {
+            Mensagem.mensagemNenhumPacienteCadastrado();
+            return;
+        }
+    }
+
     public int getTamanho() {
         return tamanho;
     }
@@ -111,6 +140,10 @@ public class ListaEncadeadaSimples {
 
     public Cartao getUltimo() {
         return ultimo;
+    }
+
+    public int getCapacidade() {
+        return capacidade;
     }
 
 }

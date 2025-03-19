@@ -13,4 +13,11 @@ public class Mensagem {
         System.out.println("Cor Inválida!");
     }
 
+    public static void mensagemNenhumPacienteCadastrado() {
+        System.out.println("Nenhum paciente cadastrado.");
+    }
+
+    public static void mensagemInvalida() {
+        System.out.println("Opção inválida");
+    }
 }
