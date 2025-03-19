@@ -31,6 +31,9 @@ public class CartaoController {
         String nome = view.pesquisar();
         lista.remover(nome);
     }
+    public void exibirLista(){
+        view.exibir(lista.getHead());
+    }
 
     public void mostrarListaPorTipoDeUrgência() {
         lista.listaIgualAZero();
@@ -61,7 +64,7 @@ public class CartaoController {
                     pesquisarPaciente();
                     break;
                 case 4:
-                    lista.exibirLista();
+                    exibirLista();
                     break;
                 case 5:
                     mostrarListaPorTipoDeUrgência();

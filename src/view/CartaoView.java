@@ -38,6 +38,18 @@ public class CartaoView {
         }
     }
 
+    public void exibir(Cartao head){
+        Cartao atual = head;
+        if(head == null){
+            System.out.println();
+            System.out.println("Lista vazia");
+            return;
+        }
+        while(atual != null){
+            System.out.println(atual);
+            atual = atual.getProximo();
+        }
+    }
     public void imprimirSituacaoDaLista(int capacidade, int tamanho) {
         System.out.println("Situação da lista:");
         System.out.println("Tamanho da lista: " + capacidade);
