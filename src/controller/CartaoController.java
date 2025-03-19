@@ -22,14 +22,21 @@ public class CartaoController {
         lista.adicionarCartao(paciente);
     }
 
+    public void pesquisarPaciente() {
+        String nome = view.pesquisar();
+        lista.localizarPaciente(nome);
+    }
+
+    public void removerPaciente() {
+        String nome = view.pesquisar();
+        lista.remover(nome);
+    }
+
     public void mostrarListaPorTipoDeUrgência() {
-        if (lista.getTamanho() == 0) {
-            Mensagem.mensagemNenhumPacienteCadastrado();
-            return;
-        }
+        lista.listaIgualAZero();
 
         List<Cartao> listaOrdenadaPorUrgencia = lista.listarPorUrgencia();
-        view.listarPorUrgencia(listaOrdenadaPorUrgencia);
+        view.listar(listaOrdenadaPorUrgencia);
     }
 
     public void mostrarSituacaoDaLista() {
@@ -48,10 +55,13 @@ public class CartaoController {
                     cadastrarPaciente(paciente);
                     break;
                 case 2:
+                    removerPaciente();
                     break;
                 case 3:
+                    pesquisarPaciente();
                     break;
                 case 4:
+                    lista.exibirLista();
                     break;
                 case 5:
                     mostrarListaPorTipoDeUrgência();

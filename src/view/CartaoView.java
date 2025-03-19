@@ -27,7 +27,12 @@ public class CartaoView {
         return new Cartao(nome, cor);
     }
 
-    public void listarPorUrgencia(List<Cartao> listaCartoes) {
+    public String pesquisar() {
+        System.out.println("Digite o nome do paciente: ");
+        return scanner.nextLine();
+    }
+
+    public void listar(List<Cartao> listaCartoes) {
         for (Cartao cartao : listaCartoes) {
             System.out.println("Paciente: " + cartao.getNome() + ", Cor: " + cartao.getCor());
         }

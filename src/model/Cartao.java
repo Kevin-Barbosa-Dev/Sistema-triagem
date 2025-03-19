@@ -27,4 +27,8 @@ public class Cartao {
         this.proximo = proximo;
     }
 
+    @Override
+    public String toString() {
+        return "Nome: " + nome + ", Cor: " + cor;
+    }
 }
