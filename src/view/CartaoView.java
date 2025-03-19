@@ -22,12 +22,24 @@ public class CartaoView {
         System.out.println("Digite o nome do paciente: ");
         String nome = scanner.next();
         System.out.println("Digite a cor do cartão (V, A): ");
-        char cor = scanner.next().toLowerCase().charAt(0);
+        char cor = scanner.next().toUpperCase().charAt(0);
         return new Cartao(nome, cor);
     }
     public String pesquisar(){
         Scanner scanner1 = new Scanner(System.in);
         System.out.println("Digite o nome do paciente: ");
         return scanner1.nextLine();
+    }
+    public void exibir(Cartao head){
+        Cartao atual = head;
+        if(head == null){
+            System.out.println();
+            System.out.println("Lista vazia");
+            return;
+        }
+        while(atual != null){
+            System.out.println(atual);
+            atual = atual.getProximo();
+        }
     }
 }

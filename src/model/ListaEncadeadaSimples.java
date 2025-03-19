@@ -44,13 +44,7 @@ public class ListaEncadeadaSimples {
         ultimo = novoCartao;
         tamanho++;
     }
-    public void exibirLista(){
-        Cartao atual = head;
-        while(atual != null){
-            System.out.println(atual);
-            atual = atual.getProximo();
-        }
-    }
+
     public Cartao localizarPaciente(String nome){
         Cartao atual = head;
         int posicaoAlta = 0;
@@ -58,7 +52,7 @@ public class ListaEncadeadaSimples {
 
         while (atual != null) {
             String nomePaciente = atual.getNome();
-            char cor = atual.getCor();
+            char cor = atual.getCor();//poter metodo Upper
 
             // Determina qual contador incrementar
             int posicaoAtual;
@@ -67,7 +61,7 @@ public class ListaEncadeadaSimples {
                     posicaoAtual = ++posicaoAlta;
                     break;
                 case 'V':
-                    posicaoAtual = ++posicaoBaixa;
+                    posicaoAtual = ++posicaoBaixa;//criar um metodo para somar os amarelos na frente dos verdes.
                     break;
                 default:
                     posicaoAtual = -1;
